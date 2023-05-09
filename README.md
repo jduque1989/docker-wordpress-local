@@ -1,5 +1,7 @@
 # Quick Start
 
+The file was taken from https://github.com/aplauche/docker-wordpress-local/blob/05fc00faac28382069e896dc46107b22d98eb440/nginx/default.conf.conf
+
 Use the `.env` file to set up your local website variables including url and database name / credentials.
 
     cd cli
