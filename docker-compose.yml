@@ -1,4 +1,4 @@
-version: '3.6'
+version: '3.8'
 services:
   nginx:
     image: nginx:latest
@@ -30,9 +30,17 @@ services:
       MYSQL_USER: ${DB_USER}
       MYSQL_PASSWORD: ${DB_PASSWORD}
 
+  redis:
+    image: redis:latest
+    container_name: ${APP_NAME}-redis
+    restart: always
+    volumes:
+     - ./redis-data:/data
+
   wordpress:
     depends_on: 
       - mysql
+      - redis
     image: wordpress:latest
     container_name: ${APP_NAME}-wordpress
     restart: always
@@ -47,7 +55,8 @@ services:
 
 
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin
+    image: phpmyadmin:latest
+    platform: linux/arm64/v8
     container_name: ${APP_NAME}-phpmyadmin
     volumes:
       - ./config/phpmyadmin.ini:/usr/local/etc/php/conf.d/phpmyadmin.ini
