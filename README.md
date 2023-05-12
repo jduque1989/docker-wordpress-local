@@ -64,3 +64,23 @@ Now you are ready to go! Change directories back one:
 Run docker compose and the images will be downloaded and your local instance will be setup and accessible at your custom url.
 
     docker-compose up
+
+## Config Redis Container
+
+Access into Redis container
+
+    docker exec -it myapp-redis bash
+
+    apt update
+
+    apt-get install php-redis
+
+After install php-redis extension the file wp-config.php should add this lines
+
+
+define( 'WP_REDIS_HOST', 'redis' );
+define( 'WP_REDIS_PORT', '6379' );
+define( 'WP_CACHE_KEY_SALT', 'wp-docker-5DknvYepdjyJMo8gDqrLhrpAJUQ' );
+define( 'WP_CACHE', true );
+
+
