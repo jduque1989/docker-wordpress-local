@@ -40,7 +40,7 @@ services:
   wordpress:
     depends_on: 
       - mysql
-      - redis
+      # - redis
     image: wordpress:latest
     container_name: ${APP_NAME}-wordpress
     restart: always
